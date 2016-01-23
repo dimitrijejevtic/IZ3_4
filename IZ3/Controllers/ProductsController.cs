@@ -1,4 +1,5 @@
-﻿using IZ3.Models;
+﻿using IZ3.DTOs;
+using IZ3.Models;
 using Newtonsoft.Json;
 using System.Data;
 using System.Data.Entity;
@@ -14,6 +15,7 @@ namespace IZ3
 {
     public class ProductsController : ApiController
     {
+        
         private IZ3Context db = new IZ3Context();
         
 
@@ -113,6 +115,7 @@ namespace IZ3
 
             return Ok(product);
         }
+       
 
         protected override void Dispose(bool disposing)
         {

@@ -26,7 +26,8 @@ namespace IZ3
                       "~/Content/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                        "~/Scripts/knockout-{version}.js",
-                       "~/Scripts/app.js"));
+                       "~/Scripts/app.js",
+                       "~/Scripts/data.js"));
         }
     }
 }

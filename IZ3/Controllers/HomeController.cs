@@ -35,6 +35,38 @@ namespace IZ3.Controllers
                 }
                 return response.StatusCode.ToString();
             }
-        }      
+        }
+        public async Task<string> GetDataAsync()
+        {
+            using (var client= new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:53869/api/Data");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = await client.GetAsync("");
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = await response.Content.ReadAsStringAsync();
+                    return res;
+                }
+                return response.StatusCode.ToString();
+            }
+        }
+        public async Task<string> GetParamDataAsync()
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:53869/api/Data");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = await client.GetAsync("?param=Wins");
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = await response.Content.ReadAsStringAsync();
+                    return res;
+                }
+                return response.StatusCode.ToString();
+            }
+        }
     }
 }
